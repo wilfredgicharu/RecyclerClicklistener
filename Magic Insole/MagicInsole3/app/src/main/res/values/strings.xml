@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Magic Insole</string>
+    <string name="bluetooth">bluetooth</string>
+    <string name="gender">GENDER :</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="weight">WEIGHT :</string>
+    <string name="kg">kg</string>
+    <string name="height">HEIGHT :</string>
+    <string name="cm">cm</string>
+    <string name="steps">STEPS :</string>
+    <string name="start">Start</string>
+    <string name="reset">Reset</string>
+    <string name="stop">stop</string>
+    <string name="result">RESULT :</string>
+    <string name="let_s_go">LET\'S GO!</string>
+    <string name="how_life_become_so_easy_for_us">How life become so easy for us!</string>
+    <string name="_3_put_it_into_your_pocket">(3) Put it into your pocket.</string>
+    <string name="_2_open_your_magic_insole_apps">(2) Open your Magic Insole apps</string>
+    <string name="_1_put_on_your_magic_insole_device_into_your_daily_shoes">(1) Put on your Magic Insole device into your daily shoes</string>
+    <string name="please_turn_on_your_bluetooth_device">PLEASE TURN ON YOUR BLUETOOTH DEVICE</string>
+    <string name="welcome_to_magic_insole">WELCOME TO MAGIC INSOLE</string>
+    <string name="textview">TextView</string>
+</resources>

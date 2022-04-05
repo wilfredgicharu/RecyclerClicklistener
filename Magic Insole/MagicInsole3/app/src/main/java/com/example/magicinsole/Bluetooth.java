@@ -1,0 +1,39 @@
+package com.example.magicinsole;
+
+/**
+ * Created by AnisSarah on Sept2021.
+ */
+
+import android.app.AlertDialog;
+import android.bluetooth.BluetoothAdapter;
+import android.content.DialogInterface;
+import android.content.Intent;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import android.os.Bundle;
+import android.app.ListFragment;
+
+public class Bluetooth extends AppCompatActivity implements DeviceListFragment.OnFragmentInteractionListener {
+
+    private DeviceListFragment mDeviceListFragment;
+    private BluetoothAdapter BTAdapter;
+
+
+    public static int REQUEST_BLUETOOTH = 1;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_deviceitem_list);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        mDeviceListFragment = DeviceListFragment.newInstance(BTAdapter);
+        fragmentManager.beginTransaction().replace(R.id.container, mDeviceListFragment).commit();
+    }
+
+    @Override
+    public void onFragmentInteraction(String id) {
+
+    }
+}
