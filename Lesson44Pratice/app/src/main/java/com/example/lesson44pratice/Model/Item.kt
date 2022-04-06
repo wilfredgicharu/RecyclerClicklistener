@@ -1,4 +1,8 @@
 package com.example.lesson44pratice.Model
 
-class Item {
-}
+
+data class Item(
+val id: Long,
+val name: String,
+val icon: Int
+)
