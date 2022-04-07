@@ -1,14 +1,18 @@
 package com.example.lesson44pratice.Adapter
 
 import android.app.TaskStackBuilder.create
+import android.content.IntentFilter.create
+import android.media.MediaPlayer.create
 import android.view.ViewGroup
 import android.widget.AdapterView
+import androidx.customview.widget.ViewDragHelper.create
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lesson44pratice.Adapter.MyAdapter.Type.ADVERTISMENT
 import com.example.lesson44pratice.Adapter.MyAdapter.Type.ITEM
 import com.example.lesson44pratice.ViewHolders.BaseViewHolder
 import com.example.lesson44pratice.Model.Item
 import com.example.lesson44pratice.ViewHolders.AdViewHolder
+import com.example.lesson44pratice.ViewHolders.AdViewHolder.Companion.create
 import com.example.lesson44pratice.ViewHolders.MyViewHolder
 import java.net.URI.create
 import java.util.*
@@ -28,6 +32,12 @@ class MyAdapter (private val listener: AdapterView.OnItemClickListener) :
     override fun onBindViewHolder(holder: BaseViewHolder<Any>, position: Int) {
         TODO("Not yet implemented")
     }
+    //Displaying the items
+    fun setNewItems (newItems: List<Any>){
+        items.clear()
+        items.addAll(newItems)
+        notifyDataSetChanged()
+    }
 
     override fun getItemCount() = items.size
 
@@ -41,5 +51,11 @@ class MyAdapter (private val listener: AdapterView.OnItemClickListener) :
     object Type {
         const val ITEM = 0
         const val ADVERTISMENT = 1
+    }
+    //When the items clicked
+    interface OnClickListener{
+        fun onItemClick(position: Int)
+        fun onAdClick(position: Int)
+        fun onButtonClick(position: Int)
     }
 }
