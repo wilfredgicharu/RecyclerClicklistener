@@ -8,7 +8,6 @@ import com.example.lesson44pratice.FragmentItemsListener
 import com.example.lesson44pratice.R
 import com.example.lesson44pratice.fragments.FragmentItemDetails
 import com.example.lesson44pratice.fragments.FragmentItems
-import com.example.lesson44pratice.fragments.FragmentItems.Companion.newInstance
 import javax.xml.datatype.DatatypeFactory.newInstance
 
 class MainActivity : AppCompatActivity(), FragmentItemsListener {
