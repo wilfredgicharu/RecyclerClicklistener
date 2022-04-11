@@ -31,7 +31,7 @@ class FragmentItems : Fragment(R.layout.fragment_items), MyAdapter.OnClickListen
     }
 
     private fun setup() {
-        list = Data.getLongListOfItems()
+        list = Data.getLongListItems()
         val myAdapter = MyAdapter(this)
         recyclerView.adapter = myAdapter
         myAdapter.setNewItems(list)
