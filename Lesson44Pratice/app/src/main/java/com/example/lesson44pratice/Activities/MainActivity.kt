@@ -4,13 +4,14 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.lesson44pratice.FragmentItemsListener
 import com.example.lesson44pratice.R
 import com.example.lesson44pratice.fragments.FragmentItemDetails
 import com.example.lesson44pratice.fragments.FragmentItems
 import com.example.lesson44pratice.fragments.FragmentItems.Companion.newInstance
 import javax.xml.datatype.DatatypeFactory.newInstance
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), FragmentItemsListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,14 +27,16 @@ class MainActivity : AppCompatActivity() {
             .addToBackStack(null)
             .commit()
     }
-    override fun openFragemntItemDetails(id: Long){
+
+
+    override fun openFragmentItemDetails(id: Long) {
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, FragmentItemDetails.newInstance(id))
             .addToBackStack(null)
             .commit()
-
     }
+
     override fun openBrowser(url: String){
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
         startActivity(intent)
