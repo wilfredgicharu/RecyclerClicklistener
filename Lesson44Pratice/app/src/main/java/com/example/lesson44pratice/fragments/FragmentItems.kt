@@ -1,60 +1,59 @@
 package com.example.lesson44pratice.fragments
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView
+import com.example.lesson44pratice.Adapter.MyAdapter
+import com.example.lesson44pratice.FragmentItemsListener
+import com.example.lesson44pratice.Model.Data
+import com.example.lesson44pratice.Model.Item
 import com.example.lesson44pratice.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [FragmentItems.newInstance] factory method to
- * create an instance of this fragment.
- */
-class FragmentItems : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class FragmentItems : Fragment(R.layout.fragment_items), MyAdapter.OnClickListener {
+    private lateinit var myAdapter: MyAdapter
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var listener: FragmentItemsListener
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    private lateinit var list: List<Any>
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        recyclerView = view.findViewById(R.id.recyclerView)
+
+        setup()
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_items, container, false)
+    private fun setup() {
+        list = Data.getLongListOfItems()
+        val myAdapter = MyAdapter(this)
+        recyclerView.adapter = myAdapter
+        myAdapter.setNewItems(list)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FragmentItems.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FragmentItems().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onItemClick(position: Int) {
+        val item = list[position] as Item
+        listener.openFragmentItemDetails(item.id)
+    }
+
+    override fun onAdClick(position: Int) {
+        val url = list[position] as String
+        listener.openBrowser(url)
+    }
+
+    override fun onButtonClick(position: Int) {
+        val item = list[position] as Item
+        Toast.makeText(context, item.name, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is FragmentItemsListener) listener = context
     }
 }
