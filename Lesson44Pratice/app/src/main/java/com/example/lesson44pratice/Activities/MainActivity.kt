@@ -11,6 +11,7 @@ import com.example.lesson44pratice.fragments.FragmentItems.Companion.newInstance
 import javax.xml.datatype.DatatypeFactory.newInstance
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
