@@ -42,13 +42,6 @@ class FragmentItemDetails : Fragment(R.layout.fragment_item_details) {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_item_details, container, false)
-    }
     companion object {
         fun newInstance(id: Long): FragmentItemDetails {
             val bundle = Bundle().apply {
